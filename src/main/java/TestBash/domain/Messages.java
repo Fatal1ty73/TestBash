@@ -14,17 +14,17 @@ public class Messages
 {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id", nullable=false, unique=true, length=11)
+    @Column(name="id")
     private int id;
 
-    @Column(name="userid", length=11)
+    @Column(name="userid")
     private int userid;
 
     @Column(name="text")
     private String text;
 
 
-    @Column(name="date", nullable=true)
+    @Column(name="date")
     private Date date;
 
     public Messages() {

@@ -19,10 +19,10 @@ public class Users
 {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id", nullable=false, unique=true, length=11)
+    @Column(name="id")
     private int id;
 
-    @Column(name="name", length=255, nullable=true)
+    @Column(name="name")
     private String name;
 
     public Users() {

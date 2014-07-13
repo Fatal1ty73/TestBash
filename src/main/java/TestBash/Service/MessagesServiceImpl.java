@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Эмиль on 09.07.2014.
  */
 
-@Service("messagesService")
+@Service
 public class MessagesServiceImpl implements MessagesService {
 
     @Autowired
