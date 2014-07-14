@@ -1,9 +1,9 @@
 package TestBash.web;
 
+import TestBash.Service.MessagesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by Эмиль on 11.07.2014.
@@ -12,16 +12,36 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SiteController {
 
-    @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-    public ModelAndView defaultPage() {
+    @Autowired
+    private MessagesService contactService;
 
-        ModelAndView model = new ModelAndView();
-        model.addObject("title", "Spring Security + Hibernate Example");
-        model.addObject("message", "This is default page!");
-        model.setViewName("hello");
-        return model;
-
+    @RequestMapping("/index")
+    public String listContacts() {
+        return "start";
     }
 
+
+   /* @RequestMapping("/index")
+    public String listContacts(Map<String, Object> map) {
+
+        map.put("message", new Messages());
+        map.put("messageList", contactService.listMessages());
+
+        return "start";
+    }*/
+
+    @RequestMapping("/")
+    public String home() {
+        return "start";
+    }
+
+   /* @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String addContact(@ModelAttribute("message") Messages messages,
+                             BindingResult result) {
+
+        contactService.addMessage(messages);
+
+        return "redirect:/index";
+    }*/
 
 }
