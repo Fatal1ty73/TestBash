@@ -1,4 +1,4 @@
-package TestBash.domain;
+package ru.dz.testbash.domain;
 
 
 import javax.persistence.*;
@@ -15,9 +15,12 @@ public class Messages
     @Id
     @GeneratedValue
     @Column(name="ID")
+    // TODO s/Integer/Long
     private Integer id;
 
+    // TODO replace with OneToMany
     @Column(name="USERID")
+    // TODO s/Integer/Long
     private Integer userid;
 
     @Column(name="TEXT")

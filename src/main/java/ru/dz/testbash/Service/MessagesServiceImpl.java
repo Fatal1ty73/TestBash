@@ -1,7 +1,7 @@
-package TestBash.Service;
+package ru.dz.testbash.Service;
 
-import TestBash.dao.MessagesDAO;
-import TestBash.domain.Messages;
+import ru.dz.testbash.dao.MessagesDAO;
+import ru.dz.testbash.domain.Messages;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

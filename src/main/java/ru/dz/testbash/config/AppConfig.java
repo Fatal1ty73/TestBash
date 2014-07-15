@@ -1,4 +1,4 @@
-package TestBash.config;
+package ru.dz.testbash.config;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
@@ -11,6 +11,8 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -24,9 +26,9 @@ import java.util.Properties;
 @Configuration
 //Определяем папку, в которой будем искать веб компоненты (контроллеры)
 //Определяем папки, в которых будем автоматически искать бины-компоненты (@Component, @Service)
-@ComponentScan({ "TestBash.*" })
+@ComponentScan({"ru.dz.testbash.*"})
 @EnableTransactionManagement
-public class AppConfig {
+public class AppConfig extends WebMvcConfigurerAdapter {
 
     //Менеджер транзакций
     @Bean
@@ -39,7 +41,7 @@ public class AppConfig {
     public SessionFactory sessionFactory() {
         LocalSessionFactoryBuilder builder =
                 new LocalSessionFactoryBuilder(dataSource());
-        builder.scanPackages("TestBash.domain")
+        builder.scanPackages("ru.dz.testbash.domain")
                 .addProperties(getHibernateProperties());
 
         return builder.buildSessionFactory();
@@ -48,8 +50,7 @@ public class AppConfig {
     private Properties getHibernateProperties() {
         Properties prop = new Properties();
         prop.put("hibernate.show_sql", "true");
-        prop.put("hibernate.dialect",
-                "org.hibernate.dialect.MySQL5Dialect");
+        prop.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         prop.put("hibernate.connection.charSet","UTF-8");
         return prop;
     }
@@ -75,6 +76,12 @@ public class AppConfig {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+
 
     @Bean(name = "messageSource")
     public MessageSource messageSource()

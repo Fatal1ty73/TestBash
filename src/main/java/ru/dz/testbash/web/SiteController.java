@@ -1,7 +1,7 @@
-package TestBash.web;
+package ru.dz.testbash.web;
 
-import TestBash.Service.MessagesService;
-import TestBash.domain.Messages;
+import ru.dz.testbash.Service.MessagesService;
+import ru.dz.testbash.domain.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,13 +18,7 @@ public class SiteController {
     @Autowired
     private MessagesService messagesService;
 
-    /*@RequestMapping("/index")
-    public String listContacts(Model m) {
 
-
-
-        return "start";
-    }*/
 
 
     @RequestMapping("/index")
@@ -32,6 +26,7 @@ public class SiteController {
 
         map.put("message", new Messages());
         map.put("messageList", messagesService.listMessages());
+        map.put("messageUser","Vasya");
 
         return "start";
     }
@@ -41,13 +36,6 @@ public class SiteController {
         return "redirect:/index";
     }
 
-   /* @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addContact(@ModelAttribute("message") Messages messages,
-                             BindingResult result) {
 
-        contactService.addMessage(messages);
-
-        return "redirect:/index";
-    }*/
 
 }

@@ -1,6 +1,6 @@
-package TestBash.dao;
+package ru.dz.testbash.dao;
 
-import TestBash.domain.Messages;
+import ru.dz.testbash.domain.Messages;
 
 import java.util.List;
 

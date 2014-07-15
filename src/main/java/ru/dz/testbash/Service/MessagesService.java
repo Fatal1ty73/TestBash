@@ -1,6 +1,6 @@
-package TestBash.Service;
+package ru.dz.testbash.Service;
 
-import TestBash.domain.Messages;
+import ru.dz.testbash.domain.Messages;
 
 import java.util.List;
 

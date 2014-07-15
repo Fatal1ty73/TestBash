@@ -1,4 +1,4 @@
-package TestBash.config;
+package ru.dz.testbash.config;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;

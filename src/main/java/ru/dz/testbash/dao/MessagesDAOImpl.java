@@ -1,6 +1,6 @@
-package TestBash.dao;
+package ru.dz.testbash.dao;
 
-import TestBash.domain.Messages;
+import ru.dz.testbash.domain.Messages;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,6 +24,7 @@ public class MessagesDAOImpl  implements MessagesDAO  {
 
     @SuppressWarnings("unchecked")
     public List<Messages> listMessages() {
-        return sessionFactory.getCurrentSession().createQuery("from TestBash.domain.Messages").list();
+        // TODO rewrite in criteria API
+        return sessionFactory.getCurrentSession().createQuery("from ru.dz.testbash.domain.Messages").list();
     }
 }

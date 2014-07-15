@@ -8,32 +8,33 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
     <title><spring:message code="label.title" /></title>
+    <link rel="stylesheet" href="resources/css/styles.css" type="text/css" />
 </head>
 <body>
 
-<h2><spring:message code="label.title" /></h2>
 
-<h3><spring:message code="label.messages" /></h3>
+<div id="body">
+    <div id="header">
+        <h1><spring:message code="label.title" /></h1>
+    </div>
 
-<c:if test="${!empty messageList}">
-    <table class="data">
-        <tr>
-            <th><spring:message code="label.id" /></th>
-            <th><spring:message code="label.text" /></th>
-            <th><spring:message code="label.date" /></th>
-            <th>&nbsp;</th>
-        </tr>
+    <div id="addMessage">
+        <form action="${pageContext.request.contextPath}/addmess"><button type="submit"><spring:message code="label.addmessage" /></button></form>
+    </div>
+
+    <c:if test="${!empty messageList}">
         <c:forEach items="${messageList}" var="message">
-            <tr>
-                <td>${message.id}, ${message.userid}</td>
-                <td>${message.text}</td>
-                <td>${message.date}</td>
-
-            </tr>
+            <script type="application/javascript">
+            </script>
+            <div class="quote">
+                <div class="actions">
+                    <span class="user">${messageUser}</span>
+                    <span class="date">${message.date}</span>
+                </div>
+                <div class="text">${message.text}</div>
+            </div>
         </c:forEach>
-    </table>
-</c:if>
-
-
+    </c:if>
+</div>
 </body>
 </html>

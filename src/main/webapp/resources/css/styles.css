@@ -1,0 +1,94 @@
+div#header {
+    margin: 35px 0px 30px;
+}
+
+div#header h1 {
+    text-align: center;
+    line-height: 40px;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Georgia","Liberation Serif","Droid Serif","Roman Uralic",serif;
+    font-weight: normal;
+    font-size: 20pt;
+    white-space: nowrap;
+    overflow: hidden;
+}
+div.quote {
+    margin: 30px 0px;
+    position: relative;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header,  menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0px;
+    padding: 0px;
+    border: 0px none;
+    font: inherit;
+    vertical-align: baseline;
+}
+div.quote div.actions {
+    position: relative;
+    line-height: 22px;
+    font-size: 9pt;
+}
+
+div.quote div.actions .date {
+    position: absolute;
+    right: 8px;
+    bottom: 0px;
+    color: #999;
+}
+
+div.quote div.actions .user {
+    position: absolute;
+    left: 8px;
+    bottom: 0px;
+    color: #000;
+}
+
+div#body {
+    width: 740px;
+    margin: 30px auto;
+}
+div.quote div.text {
+    border-radius: 3px;
+    background: none repeat scroll 0% 0% #F3F3F3;
+    border: 1px dotted #BBB;
+    font-family: "Monaco","Liberation Mono","Droid Sans Mono","Ubuntu Mono","Lucida Console","Helvetica Neue",monospace;
+    padding: 7px 8px 5px;
+    font-size: 10pt;
+    line-height: 1.3em;
+}
+body, td, p, input, button, li {
+    font-family: "Helvetica Neue","Tahoma","Helvetica","Arial","Liberation Sans","Sans Uralic","Droid Sans",sans-serif;
+    font-weight: normal;
+    font-size: 10pt;
+    line-height: 1.3em;
+}
+div#addMessage
+{
+
+    margin-top: 18px;
+    height: 22px;
+    line-height: 22px;
+}
+
+div#addMessage button {
+    width: auto;
+    height: 21px;
+    line-height: 17px;
+    padding-bottom: 3px;
+    margin-left: 10px;
+    font-size: 9pt;
+    color: #444;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.5em;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+    text-shadow: 1px 1px 2px #FFF, 0px 1px 2px #FFF, -1px 1px 2px #FFF;
+    background: -moz-linear-gradient(0% 90% 90deg, #DDD, #FCFCFC) repeat scroll 0% 0% transparent;
+    border: 1px solid #BBB;}
+
+body {
+    color: #000;
+}
