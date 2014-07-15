@@ -1,9 +1,12 @@
 package TestBash.web;
 
 import TestBash.Service.MessagesService;
+import TestBash.domain.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Map;
 
 /**
  * Created by Эмиль on 11.07.2014.
@@ -13,26 +16,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SiteController {
 
     @Autowired
-    private MessagesService contactService;
+    private MessagesService messagesService;
 
-    @RequestMapping("/index")
-    public String listContacts() {
-        return "start";
-    }
+    /*@RequestMapping("/index")
+    public String listContacts(Model m) {
 
 
-   /* @RequestMapping("/index")
-    public String listContacts(Map<String, Object> map) {
-
-        map.put("message", new Messages());
-        map.put("messageList", contactService.listMessages());
 
         return "start";
     }*/
 
+
+    @RequestMapping("/index")
+    public String listContacts(Map<String, Object> map) {
+
+        map.put("message", new Messages());
+        map.put("messageList", messagesService.listMessages());
+
+        return "start";
+    }
+
     @RequestMapping("/")
     public String home() {
-        return "start";
+        return "redirect:/index";
     }
 
    /* @RequestMapping(value = "/add", method = RequestMethod.POST)

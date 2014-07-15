@@ -9,38 +9,38 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name = "messages")
+@Table(name = "MESSAGES")
 public class Messages
 {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    @GeneratedValue
+    @Column(name="ID")
+    private Integer id;
 
-    @Column(name="userid")
-    private int userid;
+    @Column(name="USERID")
+    private Integer userid;
 
-    @Column(name="text")
+    @Column(name="TEXT")
     private String text;
 
 
-    @Column(name="date")
+    @Column(name="DATE")
     private Date date;
 
     public Messages() {
     }
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getUserid() {
+    public Integer getUserid() {
         return userid;
     }
-    public void setUserid(int Userid) {
-        this.userid = Userid;
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public String getText() {
@@ -48,5 +48,12 @@ public class Messages
     }
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

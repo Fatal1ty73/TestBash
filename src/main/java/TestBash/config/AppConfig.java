@@ -39,7 +39,7 @@ public class AppConfig {
     public SessionFactory sessionFactory() {
         LocalSessionFactoryBuilder builder =
                 new LocalSessionFactoryBuilder(dataSource());
-        builder.scanPackages("TestBash.domain.Messages")
+        builder.scanPackages("TestBash.domain")
                 .addProperties(getHibernateProperties());
 
         return builder.buildSessionFactory();
@@ -47,7 +47,6 @@ public class AppConfig {
 
     private Properties getHibernateProperties() {
         Properties prop = new Properties();
-        prop.put("hibernate.format_sql", "true");
         prop.put("hibernate.show_sql", "true");
         prop.put("hibernate.dialect",
                 "org.hibernate.dialect.MySQL5Dialect");
@@ -60,7 +59,7 @@ public class AppConfig {
 
         BasicDataSource ds = new BasicDataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/test");
+        ds.setUrl("jdbc:mysql://localhost:3306/testbash_db");
         ds.setUsername("emil");
         ds.setPassword("1234");
         return ds;

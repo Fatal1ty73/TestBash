@@ -24,6 +24,6 @@ public class MessagesDAOImpl  implements MessagesDAO  {
 
     @SuppressWarnings("unchecked")
     public List<Messages> listMessages() {
-        return sessionFactory.getCurrentSession().createQuery("from messages").list();
+        return sessionFactory.getCurrentSession().createQuery("from TestBash.domain.Messages").list();
     }
 }
