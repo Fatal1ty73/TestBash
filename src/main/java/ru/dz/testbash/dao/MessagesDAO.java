@@ -12,5 +12,5 @@ public interface MessagesDAO {
 
     public void addMessage(Messages message);
 
-    public List<Messages> listMessages();
+    public List<Object[]> listMessages();
 }

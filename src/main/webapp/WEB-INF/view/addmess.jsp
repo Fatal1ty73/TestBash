@@ -12,10 +12,27 @@
 </head>
 <body>
 <div id="body">
-    <h1>Prosto test</h1>
-    <div id="addMessage">
-        <form action="${pageContext.request.contextPath}/"><button type="submit">Назад</button></form>
+    <div id="header">
+        <h1><spring:message code="label.title" /></h1>
     </div>
+
+    <div id="addMessage">
+        <form action="${pageContext.request.contextPath}/"><button type="submit"><spring:message code="label.addmessage" /></button></form>
+    </div>
+
+    <c:if test="${!empty usersList}">
+        <c:forEach items="${usersList}" var="users">
+            <script type="application/javascript">
+            </script>
+            <div class="quote">
+                <div class="actions">
+                    <span class="user">${users.id}</span>
+                    <span class="date">${users.nickname}</span>
+                </div>
+                <div class="text">${users.nickname}</div>
+            </div>
+        </c:forEach>
+    </c:if>
 </div>
 </body>
 </html>

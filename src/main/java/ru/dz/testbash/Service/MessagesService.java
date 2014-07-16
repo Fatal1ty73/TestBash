@@ -12,5 +12,5 @@ public interface MessagesService {
 
     public void addMessage(Messages message);
 
-    public List<Messages> listMessages();
+    public List<Object[]> listMessages();
 }

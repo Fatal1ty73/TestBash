@@ -29,7 +29,7 @@
             <div class="quote">
                 <div class="actions">
                     <span class="user">${messageUser}</span>
-                    <span class="date">${message.date}</span>
+                    <span class="date">${message.dateAddMess}</span>
                 </div>
                 <div class="text">${message.text}</div>
             </div>

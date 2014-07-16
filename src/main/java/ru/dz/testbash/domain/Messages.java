@@ -15,36 +15,32 @@ public class Messages
     @Id
     @GeneratedValue
     @Column(name="ID")
-    // TODO s/Integer/Long
-    private Integer id;
+    private int id;
 
-    // TODO replace with OneToMany
-    @Column(name="USERID")
-    // TODO s/Integer/Long
-    private Integer userid;
+    @ManyToOne
+    @JoinColumn(name = "userid")
+    private Users users;
+
+
 
     @Column(name="TEXT")
     private String text;
 
 
-    @Column(name="DATE")
-    private Date date;
+    @Column(name="dateaddmess")
+    private Date dateAddMess;
 
     public Messages() {
     }
-    public Integer getId() {
+    public int getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Integer getUserid() {
-        return userid;
-    }
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
+    public Users getUsers() { return users; }
+    public void setUsers(Users users) { this.users = users; }
 
     public String getText() {
         return text;
@@ -53,10 +49,10 @@ public class Messages
         this.text = text;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getdateAddMess() {
+        return dateAddMess;
     }
-    public void setDate(Date date) {
-        this.date = date;
+    public void setdateAddMess(Date dateAddMess) {
+        this.dateAddMess = dateAddMess;
     }
 }

@@ -1,13 +1,12 @@
 package ru.dz.testbash.web;
 
-import ru.dz.testbash.Service.MessagesService;
-import ru.dz.testbash.domain.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import ru.dz.testbash.Service.UsersService;
+import ru.dz.testbash.domain.Users;
+
+import java.util.Map;
 
 /**
  * Created by Эмиль on 15.07.2014.
@@ -16,14 +15,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AddMessController {
 
     @Autowired
-    private MessagesService messagesService;
+    private UsersService usersService;
 
     @RequestMapping("/addmess")
-    public String showAddingPage() {
+    public String listUsers(Map<String, Object> map) {
+
+        map.put("users", new Users());
+        map.put("usersList", usersService.listUsers());
+
         return "addmess";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addContact(@ModelAttribute("messagess") Messages messages,
                              BindingResult result) {
 
@@ -31,5 +34,5 @@ public class AddMessController {
 
         return "redirect:/index";
     }
-
+*/
 }

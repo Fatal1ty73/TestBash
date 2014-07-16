@@ -1,9 +1,11 @@
 package ru.dz.testbash.dao;
 
-import ru.dz.testbash.domain.Messages;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import ru.dz.testbash.domain.Messages;
 
 import java.util.List;
 
@@ -23,8 +25,20 @@ public class MessagesDAOImpl  implements MessagesDAO  {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Messages> listMessages() {
+    public List<Object[]> listMessages() {
         // TODO rewrite in criteria API
-        return sessionFactory.getCurrentSession().createQuery("from ru.dz.testbash.domain.Messages").list();
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Messages.class);
+        criteria.addOrder(Order.desc("dateAddMess"));
+/*
+        criteria.createAlias("employee.address", "address"); // inner join by default
+
+        ProjectionList columns = Projections.projectionList()
+                .add(Projections.property("name"))
+                .add(Projections.property("address.city"));
+        criteria.setProjection(columns);*/
+
+        List<Object[]> list = criteria.list();
+
+        return list;
     }
 }
