@@ -28,10 +28,10 @@
             </script>
             <div class="quote">
                 <div class="actions">
-                    <span class="user">${messageUser}</span>
-                    <span class="date">${message.dateAddMess}</span>
+                    <span class="user">${message[1]}</span>
+                    <span class="date">${message[2]}</span>
                 </div>
-                <div class="text">${message.text}</div>
+                <div class="text">${message[0]}</div>
             </div>
         </c:forEach>
     </c:if>

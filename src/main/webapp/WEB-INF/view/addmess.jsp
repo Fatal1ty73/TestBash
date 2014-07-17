@@ -15,24 +15,61 @@
     <div id="header">
         <h1><spring:message code="label.title" /></h1>
     </div>
-
     <div id="addMessage">
-        <form action="${pageContext.request.contextPath}/"><button type="submit"><spring:message code="label.addmessage" /></button></form>
+        <form action="${pageContext.request.contextPath}/"><button type="submit">Назад</button></form>
     </div>
 
-    <c:if test="${!empty usersList}">
-        <c:forEach items="${usersList}" var="users">
-            <script type="application/javascript">
-            </script>
-            <div class="quote">
-                <div class="actions">
-                    <span class="user">${users.id}</span>
-                    <span class="date">${users.nickname}</span>
+
+
+
+
+    <div id="add">
+        <form:form method="post" action="${pageContext.request.contextPath}/add" id="sendMessageForm" commandName="users">
+            <div id="form">
+                <div class="field">
+                    <label ><spring:message code="label.name"/></label>
+                    <form:input path="nickname" name="usernick" id="usernick"/>
+                    <label ><spring:message code="label.dropdown"/></label>
+                        <select name="menu" size="1">
+                            <option value="1" selected="selected"></option>
+                            <c:if test="${!empty usersList}">
+                                <c:forEach items="${usersList}" var="users">
+
+                                    <option value="${users.id}">${users.nickname}</option>
+                                </c:forEach>
+                            </c:if>
+                        </select>
                 </div>
-                <div class="text">${users.nickname}</div>
+                <textarea id="quote_text" name="text" class="field" rows="20"></textarea>
+                <div class="field" id="send">
+                    <div id="errorMessage"></div>
+                    <input value="<spring:message code="label.addmessage"/>" type="button" onclick="sendMessage()">
+                </div>
             </div>
-        </c:forEach>
-    </c:if>
+        </form:form>
+    </div>
 </div>
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function sendMessage()
+    {
+        var fieldUserNick = document.forms["sendMessageForm"]["usernick"].value;
+        var fieldMessage = document.forms["sendMessageForm"]["quote_text"].value;
+
+        sendMessageForm.submit();
+        /*
+        if(fieldUserNick.length>3 && fieldMessage>3) {
+
+        }
+        else
+        {
+            //document.getElementById('errorMessage').innerHTML = "<font color='red'>Error</font>";
+            alert("Error");
+            return false;
+        }*/
+    }
+    // -->
+</SCRIPT>
+
 </body>
 </html>

@@ -43,4 +43,13 @@ public class Users {
     public Set<Messages> getMessages() { return messages; }
     public void setMessages(Set<Messages> messagesList) { this.messages = messagesList; }
 
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", nickname='" + nickname + '\'' +
+                ", messages=" + messages +
+                '}';
+    }
 }

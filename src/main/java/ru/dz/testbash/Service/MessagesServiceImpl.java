@@ -27,7 +27,7 @@ public class MessagesServiceImpl implements MessagesService {
     }
 
     @Transactional
-    public List<Object[]> listMessages() {
+    public List listMessages() {
         return messageDAO.listMessages();
     }
 }

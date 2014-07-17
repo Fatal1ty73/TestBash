@@ -1,5 +1,6 @@
 package ru.dz.testbash.dao;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,7 +25,20 @@ public class UsersDAOimpl implements UsersDAO {
 
     @SuppressWarnings("unchecked")
     public List<Users> listUsers() {
-        return sessionFactory.getCurrentSession().createQuery("from ru.dz.testbash.domain.Users").list();
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Users.class);
+        List<Users> list = criteria.list();
+
+
+        return list;
+    }
+
+    public int lastUserId() {
+        int lastid=0;
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Users.class);
+        List<Users> list = criteria.list();
+
+
+        return lastid;
     }
 
 
