@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title><spring:message code="label.title" /></title>
     <link rel="stylesheet" href="resources/css/styles.css" type="text/css" />
 </head>
@@ -22,8 +22,11 @@
         <form action="${pageContext.request.contextPath}/addmess"><button type="submit"><spring:message code="label.addmessage" /></button></form>
     </div>
 
-    <c:if test="${!empty messageList}">
-        <c:forEach items="${messageList}" var="message">
+        <c:when test="${0 < showNumberPages}">
+            <c:set var="showNumberPages" >4</c:set>
+        </c:when>
+        <c:if test="${!empty messageList}">
+            <c:forEach items="${messageList}" var="message" begin="0" end="${param.showNumberPages}">
             <script type="application/javascript">
             </script>
             <div class="quote">
@@ -35,6 +38,15 @@
             </div>
         </c:forEach>
     </c:if>
+        <c:if test="">
+            <h1><spring:message code="label.title" /></h1>
+            <c:url value="index" var="inputURL" >
+                <c:param name="showNumberPages" value="${param.showNumberPages+5}" />
+            </c:url>
+            <a href="${inputURL}">Следующий</a>
+        </c:if>
+
+
 </div>
 </body>
 </html>

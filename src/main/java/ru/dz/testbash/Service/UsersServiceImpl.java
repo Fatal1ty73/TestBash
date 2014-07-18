@@ -18,8 +18,8 @@ public class UsersServiceImpl implements UsersService {
     private UsersDAO usersDAO;
 
     @Transactional
-    public void addUser(Users users) {
-        usersDAO.addUser(users);
+    public int addUser(Users users) {
+        return usersDAO.addUser(users);
     }
 
     @Transactional

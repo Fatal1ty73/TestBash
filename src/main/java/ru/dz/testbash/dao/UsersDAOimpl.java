@@ -18,9 +18,12 @@ public class UsersDAOimpl implements UsersDAO {
     private SessionFactory sessionFactory;
 
 
-    public void addUser(Users users) {
-        sessionFactory.getCurrentSession().save(users);
 
+    public int addUser(Users users) {
+        sessionFactory.getCurrentSession().save(users);
+        sessionFactory.getCurrentSession().flush();
+
+        return users.getId();
     }
 
     @SuppressWarnings("unchecked")
@@ -32,14 +35,6 @@ public class UsersDAOimpl implements UsersDAO {
         return list;
     }
 
-    public int lastUserId() {
-        int lastid=0;
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Users.class);
-        List<Users> list = criteria.list();
-
-
-        return lastid;
-    }
 
 
 }
