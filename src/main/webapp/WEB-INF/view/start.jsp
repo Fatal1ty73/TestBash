@@ -3,6 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,11 +23,20 @@
         <form action="${pageContext.request.contextPath}/addmess"><button type="submit"><spring:message code="label.addmessage" /></button></form>
     </div>
 
-        <c:when test="${0 < showNumberPages}">
-            <c:set var="showNumberPages" >4</c:set>
-        </c:when>
+    <!-- Проверка параметра в адресной строке на наличие страницы -->
+<c:choose>
+    <c:when test="${empty param.page}">
+        <c:set var="showPages" >1</c:set>
+    </c:when>
+    <c:otherwise>
+        <c:set var="showPages" >${param.page}</c:set>
+    </c:otherwise>
+</c:choose>
+
+    <!-- Вывод сообщений по номеру страницы  -->
         <c:if test="${!empty messageList}">
-            <c:forEach items="${messageList}" var="message" begin="0" end="${param.showNumberPages}">
+            <c:set var="countMessages" >${fn:length(messageList)}</c:set>
+            <c:forEach items="${messageList}" var="message" begin="${(showPages-1)*5}" end="${5*showPages-1}">
             <script type="application/javascript">
             </script>
             <div class="quote">
@@ -37,15 +47,23 @@
                 <div class="text">${message[0]}</div>
             </div>
         </c:forEach>
-    </c:if>
-        <c:if test="">
-            <h1><spring:message code="label.title" /></h1>
-            <c:url value="index" var="inputURL" >
-                <c:param name="showNumberPages" value="${param.showNumberPages+5}" />
-            </c:url>
-            <a href="${inputURL}">Следующий</a>
-        </c:if>
 
+    </c:if>
+    <h1>Всего записей: ${countMessages}</h1>
+    <div>
+    <c:if test="${showPages>1}">
+        <c:url value="index" var="inputURL" >
+            <c:param name="page" value="${showPages-1}" />
+        </c:url>
+        <a href="${inputURL}">Предыдущая страница</a>
+    </c:if>
+    <c:if test="${countMessages>=showPages*5}">
+            <c:url value="index" var="inputURL" >
+                <c:param name="page" value="${showPages+1}" />
+            </c:url>
+            <a href="${inputURL}">Следующая страница</a>
+    </c:if>
+    </div>
 
 </div>
 </body>

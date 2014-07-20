@@ -28,7 +28,7 @@ public class MessagesDAOImpl  implements MessagesDAO  {
 
     @SuppressWarnings("unchecked")
     public List listMessages() {
-        // TODO rewrite in criteria API
+        
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Messages.class);
         criteria.addOrder(Order.desc("dateAddMess"));
 
